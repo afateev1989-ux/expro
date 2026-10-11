@@ -1,0 +1,59 @@
+{
+  "_comment": "Гринвуд: какой 3D-файл показывать для какого артикула/декора. Формат описан в models/README-модели.txt. Временные модели помечены \"placeholder\": true — при замене на настоящую модель уберите этот флаг (или поставьте false), и плашка «временная модель» исчезнет.",
+  "collection": "kabinet-rukovoditelya-greenwood",
+  "arBaseUrl": "",
+  "models": [
+    {
+      "articles": [
+        "G-220L"
+      ],
+      "decor": "*",
+      "glb": "G-220L.glb",
+      "usdz": "G-220L.usdz",
+      "title": "Стол руководителя G-220L с брифингом G-820",
+      "placeholder": false,
+      "nativeAr": true
+    },
+    {
+      "articles": [
+        "G-200L"
+      ],
+      "decor": "*",
+      "glb": "G-200L-placeholder.glb",
+      "usdz": "",
+      "title": "Стол руководителя G-200L",
+      "placeholder": true
+    },
+    {
+      "articles": [
+        "G-933"
+      ],
+      "decor": "*",
+      "glb": "G-933-placeholder.glb",
+      "usdz": "",
+      "title": "Модуль стола с тремя ящиками G-933",
+      "placeholder": true
+    },
+    {
+      "articles": [
+        "G-67.01"
+      ],
+      "decor": "*",
+      "glb": "G-67.01-placeholder.glb",
+      "usdz": "",
+      "title": "Шкаф для документов G-67.01",
+      "placeholder": true
+    },
+    {
+      "articles": [
+        "G-681.01L"
+      ],
+      "decor": "*",
+      "glb": "G-681.01L.glb",
+      "usdz": "",
+      "title": "Тумба двухсекционная G-681.01L",
+      "placeholder": false,
+      "nativeAr": true
+    }
+  ]
+}
