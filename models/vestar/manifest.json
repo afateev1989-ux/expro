@@ -1,0 +1,26 @@
+{
+  "_comment": "Вестар: 3D/AR. Один GLB (KTX2 2k, meshopt) с двумя декорами через KHR_materials_variants; variantName выбирает декор, для iPhone — отдельный USDZ на каждый декор. arModes: сначала WebXR (Scene Viewer не читает meshopt/KTX2/variants).",
+  "collection": "kabinet-rukovoditelya-vestar",
+  "arBaseUrl": "",
+  "arModes": "webxr scene-viewer quick-look",
+  "models": [
+    {
+      "articles": ["Z-418л.1000"],
+      "decor": "Дуб Галифакс/Бетон Чикаго",
+      "variantName": "Halifax White Oak",
+      "glb": "Z-418-2k.glb",
+      "usdz": "Z-418-oak.usdz",
+      "title": "Стол Z-418л.1000 левый с блоком розеток",
+      "placeholder": false
+    },
+    {
+      "articles": ["Z-418л.1000"],
+      "decor": "Сосна Пасадена/Бетон Чикаго",
+      "variantName": "Pasadena Pine",
+      "glb": "Z-418-2k.glb",
+      "usdz": "Z-418-pine.usdz",
+      "title": "Стол Z-418л.1000 левый с блоком розеток",
+      "placeholder": false
+    }
+  ]
+}

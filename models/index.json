@@ -1,6 +1,7 @@
 {
   "_comment": "Каталог 3D/AR-моделей. Ключ — id коллекции из каталога, значение — папка с manifest.json внутри public/models/.",
   "collections": {
-    "kabinet-rukovoditelya-greenwood": "greenwood/"
+    "kabinet-rukovoditelya-greenwood": "greenwood/",
+    "kabinet-rukovoditelya-vestar": "vestar/"
   }
 }
