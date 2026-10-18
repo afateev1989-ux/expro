@@ -1,5 +1,5 @@
 {
-  "_comment": "Вестар: 3D/AR. GLB — исходник пользователя t4096_q90 в полном разрешении (WebP, meshopt), изменены только параметры материалов (матовые дерево/кромки/фаска/бетон, тонировки v3, шлифованная нержавейка). Два декора через KHR_materials_variants; variantName выбирает декор, для iPhone — отдельный USDZ на каждый декор (JPEG q95, исходное разрешение). viewer: мягкое нейтральное окружение soft-studio.hdr, экспозиция подобрана под одобренный вид v3. arModes: сначала WebXR (Scene Viewer не читает meshopt/WebP/variants).",
+  "_comment": "Вестар: 3D/AR. GLB — исходник пользователя t4096_q90 в полном разрешении (WebP, meshopt), изменены только параметры материалов (дерево/кромки/фаска/бетон: roughness 0.88, metallic 0, specular 0.3, без карт roughness и clearcoat; тонировки v3; шлифованная нержавейка). Два декора через KHR_materials_variants; variantName выбирает декор, для iPhone — отдельный USDZ на каждый декор (JPEG q95, исходное разрешение). viewer: мягкое нейтральное окружение soft-studio.hdr, экспозиция подобрана под одобренный вид v3. arModes: сначала WebXR (Scene Viewer не читает meshopt/WebP/variants).",
   "collection": "kabinet-rukovoditelya-vestar",
   "arBaseUrl": "",
   "arModes": "webxr scene-viewer quick-look",
