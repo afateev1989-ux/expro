@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<title>Экспро — заставка v2 (превью)</title>
+<style>
+html,body{margin:0;height:100%;background:#000;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Arial,sans-serif;-webkit-tap-highlight-color:transparent}
+#hero{position:fixed;inset:0;background:url(hero_vestar.jpg) center/cover;opacity:0;transform:scale(1.08);will-change:opacity,transform}
+#hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.78) 0,rgba(0,0,0,.25) 34%,rgba(0,0,0,.35) 60%,rgba(0,0,0,.85))}
+#fx{position:fixed;inset:0;width:100%;height:100%;display:block}
+#stage{position:fixed;inset:0;pointer-events:none}
+#logo{position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform,opacity;opacity:0}
+#logo img{display:block;width:100%;height:auto}
+#sheen{position:absolute;inset:0;-webkit-mask:url(logo.svg) 0 0/100% 100% no-repeat;mask:url(logo.svg) 0 0/100% 100% no-repeat;
+  background:linear-gradient(100deg,transparent 0 35%,rgba(255,255,255,0) 41%,rgba(255,214,170,.55) 46%,#fff 50%,rgba(190,200,215,.75) 53%,rgba(255,255,255,0) 59%,transparent 65%);background-size:320% 100%;background-position:130% 0;opacity:0}
+#line{position:absolute;height:2px;border-radius:2px;background:#FF7300;box-shadow:0 0 14px rgba(255,115,0,.8),0 0 2px #fff;transform-origin:50% 50%;transform:scaleX(0)}
+#motto{position:absolute;left:0;right:0;text-align:center;color:#fff;font-weight:800;letter-spacing:-.02em;line-height:1.22;font-size:clamp(20px,6vw,30px)}
+#motto .l{display:block}
+#motto .w{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .02em .08em}
+#motto .w>i{display:inline-block;font-style:normal;transform:translateY(110%);opacity:0;will-change:transform,opacity}
+#motto .acc i{color:#FF7300;text-shadow:0 0 18px rgba(255,115,0,.35)}
+#sub{position:absolute;color:rgba(255,255,255,.72);font-size:11px;font-weight:650;letter-spacing:.1em;text-transform:uppercase;opacity:0;white-space:nowrap}
+#replay{position:fixed;left:50%;bottom:calc(28px + env(safe-area-inset-bottom));transform:translateX(-50%);padding:12px 22px;border-radius:24px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);color:#fff;font:600 14px/1 inherit;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);opacity:0;pointer-events:none;transition:opacity .5s}
+#replay.on{opacity:1;pointer-events:auto}
+#replay b{color:#FF7300}
+</style>
+</head>
+<body>
+<div id="hero"></div>
+<canvas id="fx"></canvas>
+<div id="stage">
+  <div id="logo"><img src="logo.svg" alt="Экспро"><div id="sheen"></div></div>
+  <i id="line"></i>
+  <div id="motto"><span class="l"></span><span class="l acc"></span></div>
+  <span id="sub">Фабрика офисной мебели · Тула · 30+ лет</span>
+</div>
+<button id="replay" type="button"><b>↻</b> Повторить заставку</button>
+<script>
+(() => {
+'use strict';
+const qs = new URLSearchParams(location.search);
+const FREEZE = qs.has('t') ? parseFloat(qs.get('t')) : null;
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches && FREEZE == null;
+const cv = document.getElementById('fx'), ctx = cv.getContext('2d');
+const $ = (id) => document.getElementById(id);
+const logoEl = $('logo'), sheen = $('sheen'), line = $('line'), motto = $('motto'), sub = $('sub'), hero = $('hero'), replay = $('replay');
+const LOGO_AR = 664 / 2720;
+let W, H, DPR, L; // L = logo rect {x,y,w,h}
+const clamp = (x) => x < 0 ? 0 : x > 1 ? 1 : x;
+const seg = (t, a, b) => clamp((t - a) / (b - a));
+const eio = (x) => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const eo = (x) => 1 - Math.pow(1 - x, 3);
+const eoe = (x) => x >= 1 ? 1 : 1 - Math.pow(2, -10 * x);
+const lerp = (a, b, k) => a + (b - a) * k;
+let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+
+// slogan words
+const words = ['Мы', 'привносим', 'креатив,', 'сохраняя', 'традиции'];
+const ls = motto.querySelectorAll('.l');
+words.forEach((w, i) => { const s = document.createElement('span'); s.className = 'w'; s.innerHTML = `<i>${w}</i>`; (i < 3 ? ls[0] : ls[1]).append(s, ' '); });
+const wordEls = [...motto.querySelectorAll('.w>i')];
+
+// ---------- 3D desk (line drawing) ----------
+const E = []; // edges [ [x,y,z],[x,y,z], kind ]
+const box = (x0, x1, y0, y1, z0, z1, k) => { const P = (a, b, c) => [a ? x1 : x0, b ? y1 : y0, c ? z1 : z0];
+  [[0,0,0,1,0,0],[0,1,0,1,1,0],[0,0,1,1,0,1],[0,1,1,1,1,1],[0,0,0,0,1,0],[1,0,0,1,1,0],[0,0,1,0,1,1],[1,0,1,1,1,1],[0,0,0,0,0,1],[1,0,0,1,0,1],[0,1,0,0,1,1],[1,1,0,1,1,1]]
+  .forEach(([a,b,c,d,e,f]) => E.push([P(a,b,c), P(d,e,f), k])); };
+box(-0.9, 0.9, 0.71, 0.75, -0.45, 0.45, 1);            // tabletop
+box(-0.95, 0.45, 0.0, 0.66, 0.5, 0.95, 0);             // pedestal / return
+[[0.86,0,-0.36,0.86,0,0.36],[0.86,0,0.36,0.86,0.71,0.42],[0.86,0.71,-0.42,0.86,0,-0.36],[0.82,0.71,-0.42,0.82,0.71,0.42]].forEach(([a,b,c,d,e,f]) => E.push([[a,b,c],[d,e,f],2])); // sled leg
+[[-0.95,0.24,0.95,-0.1,0.24,0.95],[-0.95,0.45,0.95,-0.1,0.45,0.95],[-0.1,0,0.95,-0.1,0.66,0.95],[-0.7,0.35,0.955,-0.35,0.35,0.955],[-0.7,0.56,0.955,-0.35,0.56,0.955],[-0.08,0.66,0.6,-0.08,0.71,0.6]].forEach(([a,b,c,d,e,f]) => E.push([[a,b,c],[d,e,f],3])); // drawers, handles
+const DY = -0.4;
+let cam = { yaw: 0, pitch: 0, d: 4, f: 600, cx: 0, cy: 0 };
+function proj(p) {
+  const x0 = p[0], y0 = p[1] + DY, z0 = p[2];
+  const cy = Math.cos(cam.yaw), sy = Math.sin(cam.yaw);
+  const x1 = x0 * cy + z0 * sy, z1 = -x0 * sy + z0 * cy;
+  const cp = Math.cos(cam.pitch), sp = Math.sin(cam.pitch);
+  const y2 = y0 * cp - z1 * sp, z2 = y0 * sp + z1 * cp;
+  const z = cam.d - z2; return [cam.cx + cam.f * x1 / z, cam.cy - cam.f * y2 / z, z];
+}
+
+// ---------- particles ----------
+let P = [];
+function buildParticles(img) {
+  const w = Math.round(L.w), h = Math.round(L.h);
+  const oc = document.createElement('canvas'); oc.width = w; oc.height = h;
+  const o = oc.getContext('2d'); o.drawImage(img, 0, 0, w, h);
+  const d = o.getImageData(0, 0, w, h).data; const pts = [];
+  const step = Math.max(1, Math.round(w / 260));
+  for (let y = 0; y < h; y += step) for (let x = 0; x < w; x += step) if (d[(y * w + x) * 4 + 3] > 140) pts.push([x, y]);
+  const N = Math.min(pts.length, W < 600 ? 1500 : 2400);
+  seed = 11; for (let i = pts.length - 1; i > 0; i--) { const j = (rnd() * (i + 1)) | 0; [pts[i], pts[j]] = [pts[j], pts[i]]; }
+  P = pts.slice(0, N).map(([x, y]) => { const e = E[(rnd() * E.length) | 0]; const u = rnd();
+    return { tx: x / w, ty: y / h, s: [lerp(e[0][0], e[1][0], u), lerp(e[0][1], e[1][1], u), lerp(e[0][2], e[1][2], u)],
+      dl: 2.05 + 0.55 * (x / w) + 0.35 * rnd(), arc: (rnd() - 0.5) * 2, sz: 0.7 + rnd() * 1.1, o: rnd() < 0.28, tw: rnd() * 6.28 }; });
+}
+// dust (3 depth layers)
+seed = 3;
+const D = Array.from({ length: 150 }, (_, i) => ({ x: rnd(), y: rnd(), z: [0.3, 0.6, 1][i % 3], o: rnd() < 0.2, ph: rnd() * 6.28 }));
+
+// sprites
+function sprite(sz, fn) { const c = document.createElement('canvas'); c.width = c.height = sz; fn(c.getContext('2d'), sz); return c; }
+const glowS = sprite(256, (g, s) => { const r = g.createRadialGradient(s/2, s/2, 0, s/2, s/2, s/2); r.addColorStop(0, 'rgba(255,170,90,.9)'); r.addColorStop(.18, 'rgba(255,115,0,.45)'); r.addColorStop(.5, 'rgba(255,115,0,.10)'); r.addColorStop(1, 'rgba(255,115,0,0)'); g.fillStyle = r; g.fillRect(0, 0, s, s); });
+const raysS = sprite(512, (g, s) => { g.translate(s/2, s/2); seed = 5;
+  for (let i = 0; i < 28; i++) { const a = (i / 28) * Math.PI * 2 + rnd() * .15; const wdt = 0.02 + rnd() * 0.05; const len = s * (0.32 + rnd() * 0.18);
+    const r = g.createRadialGradient(0, 0, 0, 0, 0, len); r.addColorStop(0, `rgba(255,150,60,${.35 + rnd() * .3})`); r.addColorStop(.5, 'rgba(255,115,0,.12)'); r.addColorStop(1, 'rgba(255,115,0,0)');
+    g.fillStyle = r; g.beginPath(); g.moveTo(0, 0); g.arc(0, 0, len, a - wdt, a + wdt); g.closePath(); g.fill(); } });
+const flareS = sprite(256, (g, s) => { const r = g.createRadialGradient(s/2, s/2, 0, s/2, s/2, s/2); r.addColorStop(0, 'rgba(255,255,250,1)'); r.addColorStop(.1, 'rgba(255,200,140,.8)'); r.addColorStop(.35, 'rgba(255,115,0,.25)'); r.addColorStop(1, 'rgba(255,115,0,0)'); g.fillStyle = r; g.fillRect(0, 0, s, s); });
+
+function layout() {
+  DPR = Math.min(devicePixelRatio || 1, 2); W = innerWidth; H = innerHeight;
+  cv.width = W * DPR; cv.height = H * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  const lw = Math.min(W * 0.8, 440); L = { w: lw, h: lw * LOGO_AR, x: (W - lw) / 2, y: H * 0.43 - lw * LOGO_AR / 2 };
+  logoEl.style.width = L.w + 'px';
+  line.style.left = (L.x + L.w * 0.16) + 'px'; line.style.width = (L.w * 0.81) + 'px'; line.style.top = (L.y + L.h + 16) + 'px';
+  motto.style.top = (L.y + L.h + 44) + 'px';
+  cam.f = Math.min(W, H * 0.9) * 1.25; cam.cx = W / 2; cam.cy = H * 0.45;
+}
+// final (welcome) logo position
+const endRect = () => { const w = Math.min(W * 0.62, 260); return { x: 24, y: 28 + (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--st')) || 0), w }; };
+
+function render(t) {
+  ctx.clearRect(0, 0, W, H);
+  // camera: slow orbit + dolly
+  const ck = eio(seg(t, 0, 3.4));
+  cam.yaw = lerp(-0.95, -0.35, ck); cam.pitch = lerp(0.55, 0.32, ck); cam.d = lerp(4.6, 3.3, ck);
+  const outK = eio(seg(t, 5.7, 6.6));
+  ctx.globalAlpha = 1 - outK * 0.92;
+  // --- ambient dust with depth parallax
+  ctx.globalCompositeOperation = 'lighter';
+  const dk = seg(t, 0, 1.2);
+  for (const p of D) { const x = ((p.x + cam.yaw * 0.12 * p.z + 2) % 1) * W; const y = (((p.y - t * 0.018 * p.z) % 1 + 1) % 1) * H; const a = dk * (0.25 + 0.5 * p.z) * (0.6 + 0.4 * Math.sin(t * 2 + p.ph));
+    ctx.fillStyle = p.o ? `rgba(255,115,0,${a * .8})` : `rgba(255,255,255,${a * .45})`; const r = 0.5 + p.z * 1.3; ctx.fillRect(x - r / 2, y - r / 2, r, r); }
+  // --- perspective floor grid
+  const gA = seg(t, 0.1, 1.2) * (1 - seg(t, 2.6, 3.6));
+  if (gA > 0) { ctx.lineWidth = 1;
+    for (let i = -6; i <= 6; i++) { const a = proj([i * 0.5, 0, -3]), b = proj([i * 0.5, 0, 3]); if (a[2] > .2 && b[2] > .2) { ctx.strokeStyle = `rgba(255,255,255,${gA * 0.05 * (1 - Math.abs(i) / 7)})`; ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke(); } }
+    for (let i = -6; i <= 6; i++) { const a = proj([-3, 0, i * 0.5]), b = proj([3, 0, i * 0.5]); if (a[2] > .2 && b[2] > .2) { ctx.strokeStyle = `rgba(255,255,255,${gA * 0.05 * (1 - Math.abs(i) / 7)})`; ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke(); } } }
+  // --- desk drawn with light lines
+  const deskOut = seg(t, 2.1, 3.1);
+  if (deskOut < 1) {
+    E.forEach((e, i) => { const k = eio(seg(t, 0.35 + i * 0.045, 1.15 + i * 0.045)); if (k <= 0) return;
+      const a = proj(e[0]), b0 = proj(e[1]); const b = [lerp(a[0], b0[0], k), lerp(a[1], b0[1], k)];
+      const al = (1 - deskOut);
+      const orange = e[2] === 1 || e[2] === 2;
+      ctx.lineWidth = 5; ctx.strokeStyle = orange ? `rgba(255,115,0,${.16 * al})` : `rgba(255,255,255,${.06 * al})`; ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke();
+      ctx.lineWidth = 1.1; ctx.strokeStyle = orange ? `rgba(255,170,100,${.95 * al})` : `rgba(255,255,255,${.7 * al})`; ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke();
+      if (k < 1) { ctx.drawImage(flareS, b[0] - 7, b[1] - 7, 14, 14); } // drawing head spark
+    });
+  }
+  // --- glow + volumetric rays behind the logo
+  const lcx = L.x + L.w / 2, lcy = L.y + L.h / 2;
+  const gk = eo(seg(t, 2.4, 3.6)) * (1 - outK);
+  if (gk > 0) {
+    const gs = L.w * (1.5 + 0.08 * Math.sin(t * 1.6)); ctx.globalAlpha = gk * 0.9; ctx.drawImage(glowS, lcx - gs, lcy - gs * 0.62, gs * 2, gs * 1.24);
+    const rk = eo(seg(t, 2.9, 4.0)) * (1 - seg(t, 5.4, 6.4)); if (rk > 0) { ctx.save(); ctx.translate(lcx, lcy); ctx.scale(1.9, 1); ctx.rotate(t * 0.07); ctx.globalAlpha = rk * 0.5; const rs = L.w * 1.25; ctx.drawImage(raysS, -rs, -rs, rs * 2, rs * 2); ctx.rotate(-t * 0.16); ctx.globalAlpha = rk * 0.25; ctx.drawImage(raysS, -rs * .8, -rs * .8, rs * 1.6, rs * 1.6); ctx.restore(); }
+    ctx.globalAlpha = 1 - outK * 0.92;
+  }
+  // --- particles: desk edges dissolve and converge into the logo
+  const pfade = 1 - seg(t, 3.35, 4.0);
+  if (pfade > 0 && P.length && t > 1.6) {
+    const pin = seg(t, 1.6, 2.1);
+    for (const p of P) {
+      const k = eio(seg(t, p.dl, p.dl + 1.15));
+      const s = proj(p.s); const tx = L.x + p.tx * L.w, ty = L.y + p.ty * L.h;
+      const dx = tx - s[0], dy = ty - s[1];
+      const arc = Math.sin(Math.PI * k) * p.arc * 0.22;
+      const x = s[0] + dx * k - dy * arc, y = s[1] + dy * k + dx * arc;
+      const depth = 1 + 2.2 * Math.sin(Math.PI * k); // pseudo z: closer to camera mid-flight
+      const tw = 0.75 + 0.25 * Math.sin(t * 9 + p.tw);
+      const a = pin * pfade * tw * (k > 0 ? 1 : 0.55);
+      const r = p.sz * depth;
+      ctx.fillStyle = p.o ? `rgba(255,128,20,${a})` : `rgba(255,236,215,${a * .9})`;
+      ctx.fillRect(x - r / 2, y - r / 2, r, r);
+    }
+  }
+  // --- anamorphic flare when the logo locks in
+  const fk = seg(t, 3.25, 4.4); if (fk > 0 && fk < 1) { const fa = Math.sin(Math.PI * fk); ctx.globalAlpha = fa * (1 - outK);
+    const fy = L.y + L.h + 17; ctx.drawImage(flareS, lcx - W * 0.9, fy - 6 - 10 * fa, W * 1.8, 12 + 20 * fa); ctx.drawImage(flareS, lcx - 60, fy - 60, 120, 120); }
+  ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
+
+  // --- DOM layers
+  const lk = eo(seg(t, 3.05, 3.85));
+  const e = endRect(); const sc = lerp(1, e.w / L.w, outK);
+  const x = lerp(L.x, e.x, outK), y = lerp(L.y, e.y, outK);
+  const breathe = 1 + 0.035 * (1 - lk);
+  logoEl.style.opacity = lk; logoEl.style.transform = `translate3d(${x}px,${y}px,0) scale(${sc * breathe})`;
+  const shk = eio(seg(t, 3.95, 5.0)); sheen.style.opacity = shk > 0 && shk < 1 ? 1 : 0; sheen.style.backgroundPosition = `${lerp(130, -30, shk)}% 0`;
+  const lnk = eoe(seg(t, 3.3, 4.2)); line.style.transform = `scaleX(${lnk})`; line.style.opacity = 1 - outK;
+  wordEls.forEach((w, i) => { const k = eoe(seg(t, 3.8 + i * 0.15, 4.65 + i * 0.15)); w.style.transform = `translateY(${(1 - k) * 110}%)`; w.style.opacity = k; });
+  motto.style.opacity = 1 - seg(t, 5.55, 6.0); motto.style.transform = `translateY(${-14 * seg(t, 5.55, 6.0)}px)`;
+  hero.style.opacity = outK; hero.style.transform = `scale(${lerp(1.08, 1, outK)})`;
+  const sk = eo(seg(t, 6.4, 7.0)); sub.style.opacity = sk; sub.style.left = e.x + 'px'; sub.style.top = (e.y + e.w * LOGO_AR + 14 + 8 * (1 - sk)) + 'px';
+}
+
+let t0 = 0, running = true; const END = 7.1;
+function loop(now) { if (!t0) t0 = now; const t = (now - t0) / 1000; render(t); if (t < END) requestAnimationFrame(loop); else { running = false; replay.classList.add('on'); } }
+function start() { t0 = 0; replay.classList.remove('on'); running = true; requestAnimationFrame(loop); }
+addEventListener('pointerdown', (ev) => { if (ev.target === replay) return; if (running) { const now = performance.now(); const t = (now - t0) / 1000; if (t < 5.6) t0 = now - 5.6 * 1000; } });
+replay.addEventListener('click', start);
+addEventListener('resize', () => { layout(); if (img.complete) buildParticles(img); if (!running) render(END); });
+
+const img = new Image(); img.src = 'logo.svg';
+layout();
+img.decode().catch(() => {}).then(() => { buildParticles(img);
+  if (FREEZE != null) { let n = 0; const fr = () => { render(FREEZE); if (++n < 6) requestAnimationFrame(fr); else document.title = 'ready'; }; requestAnimationFrame(fr); return; }
+  if (reduced) { t0 = performance.now() - 3.9 * 1000; }
+  start(); });
+})();
+</script>
+</body>
+</html>
