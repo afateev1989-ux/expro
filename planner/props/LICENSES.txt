@@ -1,0 +1,19 @@
+# 3D-модели декора планировщика — источники и лицензии
+
+Все модели ниже — с сайта **Poly Haven** (https://polyhaven.com), лицензия **CC0 1.0** (общественное достояние,
+https://creativecommons.org/publicdomain/zero/1.0/). Атрибуция не требуется, но мы указываем авторов.
+Модели оптимизированы для веба (glTF-Transform: упрощение сетки, meshopt-сжатие, текстуры WebP ≤ 512 px; plant-desk — 256 px).
+
+| Файл | Модель | Автор | Источник | Размер, мм (Ш×Г×В) |
+|---|---|---|---|---|
+| chair-visitor.glb | Dining Chair 02 | James Ray Cock | https://polyhaven.com/a/dining_chair_02 | 434×576×973 |
+| armchair.glb | Modern Arm Chair 01 | Vibrant Nordic | https://polyhaven.com/a/modern_arm_chair_01 | 820×987×1023 |
+| lounge-chair.glb | Mid Century Lounge Chair | Kuutti Siitonen | https://polyhaven.com/a/mid_century_lounge_chair | 1009×1190×1169 |
+| plant-tall.glb | Potted Plant 01 | Rico Cilliers | https://polyhaven.com/a/potted_plant_01 | 589×637×1351 |
+| plant-wide.glb | Potted Plant 02 | Rico Cilliers | https://polyhaven.com/a/potted_plant_02 | 701×657×841 |
+| plant-desk.glb | Potted Plant 04 | James Ray Cock | https://polyhaven.com/a/potted_plant_04 | 170×186×268 |
+
+Остальной декор (кресло офисное, диван, ТВ, монитор, маркерная доска, кулер, вешалка, торшер, ковёр)
+построен процедурно в коде планировщика (собственная разработка «Экспро»), сторонних моделей не содержит.
+
+Мебель «Экспро» — собственные модели компании, к этому списку не относится.
