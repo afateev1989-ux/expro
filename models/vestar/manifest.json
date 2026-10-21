@@ -38,7 +38,7 @@
       "usdz": "Z-12-11-oak.usdz",
       "asIs": true,
       "viewer": {
-        "environmentImage": "neutral",
+        "environmentImage": "flat-c2.hdr",
         "exposure": 1.0,
         "toneMapping": "neutral"
       }

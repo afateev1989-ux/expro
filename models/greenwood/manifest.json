@@ -55,5 +55,10 @@
       "placeholder": false,
       "nativeAr": true
     }
-  ]
+  ],
+  "viewer": {
+    "environmentImage": "flat-c2.hdr",
+    "exposure": 1.0,
+    "toneMapping": "neutral"
+  }
 }
