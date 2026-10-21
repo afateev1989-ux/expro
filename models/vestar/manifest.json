@@ -34,7 +34,8 @@
       "glb": "Z-12-11.glb",
       "title": "Шкаф низкий двухсекционный Z-12-11",
       "placeholder": false,
-      "decorStrict": true
+      "decorStrict": true,
+      "usdz": "Z-12-11-oak.usdz"
     }
   ],
   "viewer": {
