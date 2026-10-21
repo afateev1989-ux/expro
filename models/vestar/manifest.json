@@ -1,52 +1,1217 @@
 {
-  "_comment": "Вестар: 3D/AR. GLB — исходник пользователя t4096_q90 в полном разрешении (WebP, meshopt), изменены только параметры материалов (r089/c2: родные цвета текстур, дерево матовое roughness 0.88, specular 0.3; бетон подобран под эталон; шлифованная нержавейка v3 с картой шероховатости, алюминий roughness 0.5; мип-маппинг включён). Два декора через KHR_materials_variants; variantName выбирает декор, для iPhone — отдельный USDZ на каждый декор. viewer: ровное окружение flat-c2.hdr, экспозиция 3.0 под одобренный эталон. arModes: сначала WebXR. Z-12-11: файл пользователя БЕЗ ИЗМЕНЕНИЙ (asIs: никаких правок материалов ни в файле, ни в планировщике), только Дуб Галифакс; USDZ сконвертирован 1:1.",
-  "collection": "kabinet-rukovoditelya-vestar",
-  "arBaseUrl": "",
-  "arModes": "webxr scene-viewer quick-look",
-  "models": [
-    {
-      "articles": [
-        "Z-418л.1000"
-      ],
-      "decor": "Дуб Галифакс/Бетон Чикаго",
-      "variantName": "Halifax White Oak",
-      "glb": "Z-418-r089.glb",
-      "usdz": "Z-418-oak.usdz",
-      "title": "Стол Z-418л.1000 левый с блоком розеток",
-      "placeholder": false
-    },
-    {
-      "articles": [
-        "Z-418л.1000"
-      ],
-      "decor": "Сосна Пасадена/Бетон Чикаго",
-      "variantName": "Pasadena Pine",
-      "glb": "Z-418-r089.glb",
-      "usdz": "Z-418-pine.usdz",
-      "title": "Стол Z-418л.1000 левый с блоком розеток",
-      "placeholder": false
-    },
-    {
-      "articles": [
-        "Z-12-11"
-      ],
-      "decor": "Дуб Галифакс/Бетон Чикаго",
-      "glb": "Z-12-11.glb",
-      "title": "Шкаф низкий двухсекционный Z-12-11",
-      "placeholder": false,
-      "decorStrict": true,
-      "usdz": "Z-12-11-oak.usdz",
-      "asIs": true,
-      "viewer": {
-        "environmentImage": "flat-c2.hdr",
-        "exposure": 1.0,
-        "toneMapping": "neutral"
-      }
-    }
-  ],
-  "viewer": {
-    "environmentImage": "flat-c2.hdr",
-    "exposure": 3.0,
-    "toneMapping": "neutral"
+ "_comment": "Вестар: 3D/AR. Все GLB — файлы пользователя БАЙТ В БАЙТ (t2048_q80, meshopt+webp, оба декора через KHR_materials_variants). asIs: никаких правок материалов ни в файле, ни в планировщике. USDZ на каждый декор — tools/glb2usdz_asis.py 1:1 (webp→jpg/png, стекло: transmission→opacity). Просмотр: ровное окружение flat-c2.hdr, экспозиция 1. glbMobile — тоже файл пользователя без изменений (t1024_q80), его грузит планировщик на телефонах.",
+ "collection": "kabinet-rukovoditelya-vestar",
+ "arBaseUrl": "",
+ "arModes": "webxr scene-viewer quick-look",
+ "models": [
+  {
+   "articles": [
+    "Z-101"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-101.glb",
+   "usdz": "z-101-oak.usdz",
+   "title": "Стол переговоров Z-101",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-101-m.glb"
+  },
+  {
+   "articles": [
+    "Z-101"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-101.glb",
+   "usdz": "z-101-pine.usdz",
+   "title": "Стол переговоров Z-101",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-101-m.glb"
+  },
+  {
+   "articles": [
+    "Z-102"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-102.glb",
+   "usdz": "z-102-oak.usdz",
+   "title": "Стол переговоров Z-102",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-102-m.glb"
+  },
+  {
+   "articles": [
+    "Z-102"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-102.glb",
+   "usdz": "z-102-pine.usdz",
+   "title": "Стол переговоров Z-102",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-102-m.glb"
+  },
+  {
+   "articles": [
+    "Z-103"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-103.glb",
+   "usdz": "z-103-oak.usdz",
+   "title": "Стол переговоров Z-103",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-103-m.glb"
+  },
+  {
+   "articles": [
+    "Z-103"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-103.glb",
+   "usdz": "z-103-pine.usdz",
+   "title": "Стол переговоров Z-103",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-103-m.glb"
+  },
+  {
+   "articles": [
+    "Z-104"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-104.glb",
+   "usdz": "z-104-oak.usdz",
+   "title": "Стол переговоров Z-104",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-104-m.glb"
+  },
+  {
+   "articles": [
+    "Z-104"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-104.glb",
+   "usdz": "z-104-pine.usdz",
+   "title": "Стол переговоров Z-104",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-104-m.glb"
+  },
+  {
+   "articles": [
+    "Z-12-11"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-12-11.glb",
+   "usdz": "z-12-11-oak.usdz",
+   "title": "Шкаф низкий двухсекционный Z-12-11",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-12-11-m.glb"
+  },
+  {
+   "articles": [
+    "Z-12-11"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-12-11.glb",
+   "usdz": "z-12-11-pine.usdz",
+   "title": "Шкаф низкий двухсекционный Z-12-11",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-12-11-m.glb"
+  },
+  {
+   "articles": [
+    "Z-13-11л"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-13-11_l.glb",
+   "usdz": "z-13-11_l-oak.usdz",
+   "title": "Шкаф низкий трехсекционный левый Z-13-11л",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-13-11_l-m.glb"
+  },
+  {
+   "articles": [
+    "Z-13-11л"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-13-11_l.glb",
+   "usdz": "z-13-11_l-pine.usdz",
+   "title": "Шкаф низкий трехсекционный левый Z-13-11л",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-13-11_l-m.glb"
+  },
+  {
+   "articles": [
+    "Z-13-11пр"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-13-11_r.glb",
+   "usdz": "z-13-11_r-oak.usdz",
+   "title": "Шкаф низкий трехсекционный правый Z-13-11пр",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-13-11_r-m.glb"
+  },
+  {
+   "articles": [
+    "Z-13-11пр"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-13-11_r.glb",
+   "usdz": "z-13-11_r-pine.usdz",
+   "title": "Шкаф низкий трехсекционный правый Z-13-11пр",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-13-11_r-m.glb"
+  },
+  {
+   "articles": [
+    "Z-14-11"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-14-11.glb",
+   "usdz": "z-14-11-oak.usdz",
+   "title": "Шкаф низкий четырехсекционный Z-14-11",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-14-11-m.glb"
+  },
+  {
+   "articles": [
+    "Z-14-11"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-14-11.glb",
+   "usdz": "z-14-11-pine.usdz",
+   "title": "Шкаф низкий четырехсекционный Z-14-11",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-14-11-m.glb"
+  },
+  {
+   "articles": [
+    "Z-218л.0000"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-218_l-0000.glb",
+   "usdz": "z-218_l-0000-oak.usdz",
+   "title": "Стол Z-218л.0000 левый",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-218_l-0000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-218л.0000"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-218_l-0000.glb",
+   "usdz": "z-218_l-0000-pine.usdz",
+   "title": "Стол Z-218л.0000 левый",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-218_l-0000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-218л.1000"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-218_l-1000.glb",
+   "usdz": "z-218_l-1000-oak.usdz",
+   "title": "Стол Z-218л.1000 левый с блоком розеток",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-218_l-1000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-218л.1000"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-218_l-1000.glb",
+   "usdz": "z-218_l-1000-pine.usdz",
+   "title": "Стол Z-218л.1000 левый с блоком розеток",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-218_l-1000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-218пр.0000"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-218_r-0000.glb",
+   "usdz": "z-218_r-0000-oak.usdz",
+   "title": "Стол Z-218пр.0000 правый",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-218_r-0000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-218пр.0000"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-218_r-0000.glb",
+   "usdz": "z-218_r-0000-pine.usdz",
+   "title": "Стол Z-218пр.0000 правый",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-218_r-0000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-218пр.1000"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-218_r-1000.glb",
+   "usdz": "z-218_r-1000-oak.usdz",
+   "title": "Стол Z-218пр.1000 правый с блоком розеток",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-218_r-1000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-218пр.1000"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-218_r-1000.glb",
+   "usdz": "z-218_r-1000-pine.usdz",
+   "title": "Стол Z-218пр.1000 правый с блоком розеток",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-218_r-1000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-220л.0000"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-220_l-0000.glb",
+   "usdz": "z-220_l-0000-oak.usdz",
+   "title": "Стол Z-220л.0000 левый",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-220_l-0000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-220л.0000"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-220_l-0000.glb",
+   "usdz": "z-220_l-0000-pine.usdz",
+   "title": "Стол Z-220л.0000 левый",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-220_l-0000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-220л.1000"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-220_l-1000.glb",
+   "usdz": "z-220_l-1000-oak.usdz",
+   "title": "Стол Z-220л.1000 левый с блоком розеток",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-220_l-1000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-220л.1000"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-220_l-1000.glb",
+   "usdz": "z-220_l-1000-pine.usdz",
+   "title": "Стол Z-220л.1000 левый с блоком розеток",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-220_l-1000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-220пр.0000"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-220_r-0000.glb",
+   "usdz": "z-220_r-0000-oak.usdz",
+   "title": "Стол Z-220пр.0000 правый",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-220_r-0000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-220пр.0000"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-220_r-0000.glb",
+   "usdz": "z-220_r-0000-pine.usdz",
+   "title": "Стол Z-220пр.0000 правый",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-220_r-0000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-220пр.1000"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-220_r-1000.glb",
+   "usdz": "z-220_r-1000-oak.usdz",
+   "title": "Стол Z-220пр.1000 правый с блоком розеток",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-220_r-1000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-220пр.1000"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-220_r-1000.glb",
+   "usdz": "z-220_r-1000-pine.usdz",
+   "title": "Стол Z-220пр.1000 правый с блоком розеток",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-220_r-1000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-222л.0000"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-222_l-0000.glb",
+   "usdz": "z-222_l-0000-oak.usdz",
+   "title": "Стол Z-222л.0000 левый",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-222_l-0000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-222л.0000"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-222_l-0000.glb",
+   "usdz": "z-222_l-0000-pine.usdz",
+   "title": "Стол Z-222л.0000 левый",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-222_l-0000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-222л.1000"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-222_l-1000.glb",
+   "usdz": "z-222_l-1000-oak.usdz",
+   "title": "Стол Z-222л.1000 левый с блоком розеток",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-222_l-1000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-222л.1000"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-222_l-1000.glb",
+   "usdz": "z-222_l-1000-pine.usdz",
+   "title": "Стол Z-222л.1000 левый с блоком розеток",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-222_l-1000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-222пр.0000"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-222_r-0000.glb",
+   "usdz": "z-222_r-0000-oak.usdz",
+   "title": "Стол Z-222пр.0000 правый",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-222_r-0000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-222пр.0000"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-222_r-0000.glb",
+   "usdz": "z-222_r-0000-pine.usdz",
+   "title": "Стол Z-222пр.0000 правый",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-222_r-0000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-222пр.1000"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-222_r-1000.glb",
+   "usdz": "z-222_r-1000-oak.usdz",
+   "title": "Стол Z-222пр.1000 правый с блоком розеток",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-222_r-1000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-222пр.1000"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-222_r-1000.glb",
+   "usdz": "z-222_r-1000-pine.usdz",
+   "title": "Стол Z-222пр.1000 правый с блоком розеток",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-222_r-1000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-31-11"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-31-11.glb",
+   "usdz": "z-31-11-oak.usdz",
+   "title": "Шкаф односекционный Z-31-11",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-31-11-m.glb"
+  },
+  {
+   "articles": [
+    "Z-31-11"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-31-11.glb",
+   "usdz": "z-31-11-pine.usdz",
+   "title": "Шкаф односекционный Z-31-11",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-31-11-m.glb"
+  },
+  {
+   "articles": [
+    "Z-318"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-318.glb",
+   "usdz": "z-318-oak.usdz",
+   "title": "Стол Z-318",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-318-m.glb"
+  },
+  {
+   "articles": [
+    "Z-318"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-318.glb",
+   "usdz": "z-318-pine.usdz",
+   "title": "Стол Z-318",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-318-m.glb"
+  },
+  {
+   "articles": [
+    "Z-32-11"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-32-11.glb",
+   "usdz": "z-32-11-oak.usdz",
+   "title": "Шкаф двухсекционный Z-32-11",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-32-11-m.glb"
+  },
+  {
+   "articles": [
+    "Z-32-11"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-32-11.glb",
+   "usdz": "z-32-11-pine.usdz",
+   "title": "Шкаф двухсекционный Z-32-11",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-32-11-m.glb"
+  },
+  {
+   "articles": [
+    "Z-320"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-320.glb",
+   "usdz": "z-320-oak.usdz",
+   "title": "Стол Z-320",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-320-m.glb"
+  },
+  {
+   "articles": [
+    "Z-320"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-320.glb",
+   "usdz": "z-320-pine.usdz",
+   "title": "Стол Z-320",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-320-m.glb"
+  },
+  {
+   "articles": [
+    "Z-33-11л"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-33-11_l.glb",
+   "usdz": "z-33-11_l-oak.usdz",
+   "title": "Шкаф трехсекционный левый Z-33-11л",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-33-11_l-m.glb"
+  },
+  {
+   "articles": [
+    "Z-33-11л"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-33-11_l.glb",
+   "usdz": "z-33-11_l-pine.usdz",
+   "title": "Шкаф трехсекционный левый Z-33-11л",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-33-11_l-m.glb"
+  },
+  {
+   "articles": [
+    "Z-33-11пр"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-33-11_r.glb",
+   "usdz": "z-33-11_r-oak.usdz",
+   "title": "Шкаф трехсекционный правый Z-33-11пр",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-33-11_r-m.glb"
+  },
+  {
+   "articles": [
+    "Z-33-11пр"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-33-11_r.glb",
+   "usdz": "z-33-11_r-pine.usdz",
+   "title": "Шкаф трехсекционный правый Z-33-11пр",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-33-11_r-m.glb"
+  },
+  {
+   "articles": [
+    "Z-34-11"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-34-11.glb",
+   "usdz": "z-34-11-oak.usdz",
+   "title": "Шкаф четырехсекционный Z-34-11",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-34-11-m.glb"
+  },
+  {
+   "articles": [
+    "Z-34-11"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-34-11.glb",
+   "usdz": "z-34-11-pine.usdz",
+   "title": "Шкаф четырехсекционный Z-34-11",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-34-11-m.glb"
+  },
+  {
+   "articles": [
+    "Z-418л.0000"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-418_l-0000.glb",
+   "usdz": "z-418_l-0000-oak.usdz",
+   "title": "Стол Z-418л.0000 левый",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-418_l-0000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-418л.0000"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-418_l-0000.glb",
+   "usdz": "z-418_l-0000-pine.usdz",
+   "title": "Стол Z-418л.0000 левый",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-418_l-0000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-418л.1000"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-418_l-1000.glb",
+   "usdz": "z-418_l-1000-oak.usdz",
+   "title": "Стол Z-418л.1000 левый с блоком розеток",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-418_l-1000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-418л.1000"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-418_l-1000.glb",
+   "usdz": "z-418_l-1000-pine.usdz",
+   "title": "Стол Z-418л.1000 левый с блоком розеток",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-418_l-1000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-418пр.0000"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-418_r-0000.glb",
+   "usdz": "z-418_r-0000-oak.usdz",
+   "title": "Стол Z-418пр.0000 правый",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-418_r-0000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-418пр.0000"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-418_r-0000.glb",
+   "usdz": "z-418_r-0000-pine.usdz",
+   "title": "Стол Z-418пр.0000 правый",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-418_r-0000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-418пр.1000"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-418_r-1000.glb",
+   "usdz": "z-418_r-1000-oak.usdz",
+   "title": "Стол Z-418пр.1000 правый с блоком розеток",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-418_r-1000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-418пр.1000"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-418_r-1000.glb",
+   "usdz": "z-418_r-1000-pine.usdz",
+   "title": "Стол Z-418пр.1000 правый с блоком розеток",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-418_r-1000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-420л.0000"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-420_l-0000.glb",
+   "usdz": "z-420_l-0000-oak.usdz",
+   "title": "Стол Z-420л.0000 левый",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-420_l-0000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-420л.0000"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-420_l-0000.glb",
+   "usdz": "z-420_l-0000-pine.usdz",
+   "title": "Стол Z-420л.0000 левый",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-420_l-0000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-420л.1000"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-420_l-1000.glb",
+   "usdz": "z-420_l-1000-oak.usdz",
+   "title": "Стол Z-420л.1000 левый с блоком розеток",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-420_l-1000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-420л.1000"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-420_l-1000.glb",
+   "usdz": "z-420_l-1000-pine.usdz",
+   "title": "Стол Z-420л.1000 левый с блоком розеток",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-420_l-1000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-420пр.0000"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-420_r-0000.glb",
+   "usdz": "z-420_r-0000-oak.usdz",
+   "title": "Стол Z-420пр.0000 правый",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-420_r-0000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-420пр.0000"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-420_r-0000.glb",
+   "usdz": "z-420_r-0000-pine.usdz",
+   "title": "Стол Z-420пр.0000 правый",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-420_r-0000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-420пр.1000"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-420_r-1000.glb",
+   "usdz": "z-420_r-1000-oak.usdz",
+   "title": "Стол Z-420пр.1000 правый с блоком розеток",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-420_r-1000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-420пр.1000"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-420_r-1000.glb",
+   "usdz": "z-420_r-1000-pine.usdz",
+   "title": "Стол Z-420пр.1000 правый с блоком розеток",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-420_r-1000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-422л.0000"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-422_l-0000.glb",
+   "usdz": "z-422_l-0000-oak.usdz",
+   "title": "Стол Z-422л.0000 левый",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-422_l-0000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-422л.0000"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-422_l-0000.glb",
+   "usdz": "z-422_l-0000-pine.usdz",
+   "title": "Стол Z-422л.0000 левый",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-422_l-0000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-422л.1000"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-422_l-1000.glb",
+   "usdz": "z-422_l-1000-oak.usdz",
+   "title": "Стол Z-422л.1000 левый с блоком розеток",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-422_l-1000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-422л.1000"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-422_l-1000.glb",
+   "usdz": "z-422_l-1000-pine.usdz",
+   "title": "Стол Z-422л.1000 левый с блоком розеток",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-422_l-1000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-422пр.0000"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-422_r-0000.glb",
+   "usdz": "z-422_r-0000-oak.usdz",
+   "title": "Стол Z-422пр.0000 правый",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-422_r-0000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-422пр.0000"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-422_r-0000.glb",
+   "usdz": "z-422_r-0000-pine.usdz",
+   "title": "Стол Z-422пр.0000 правый",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-422_r-0000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-422пр.1000"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-422_r-1000.glb",
+   "usdz": "z-422_r-1000-oak.usdz",
+   "title": "Стол Z-422пр.1000 правый с блоком розеток",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-422_r-1000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-422пр.1000"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-422_r-1000.glb",
+   "usdz": "z-422_r-1000-pine.usdz",
+   "title": "Стол Z-422пр.1000 правый с блоком розеток",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-422_r-1000-m.glb"
+  },
+  {
+   "articles": [
+    "Z-821"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-821.glb",
+   "usdz": "z-821-oak.usdz",
+   "title": "Брифинг Z-821",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-821-m.glb"
+  },
+  {
+   "articles": [
+    "Z-821"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-821.glb",
+   "usdz": "z-821-pine.usdz",
+   "title": "Брифинг Z-821",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-821-m.glb"
+  },
+  {
+   "articles": [
+    "Z-822"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-822.glb",
+   "usdz": "z-822-oak.usdz",
+   "title": "Брифинг Z-822",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-822-m.glb"
+  },
+  {
+   "articles": [
+    "Z-822"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-822.glb",
+   "usdz": "z-822-pine.usdz",
+   "title": "Брифинг Z-822",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-822-m.glb"
+  },
+  {
+   "articles": [
+    "Z-90-1"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-90-1.glb",
+   "usdz": "z-90-1-oak.usdz",
+   "title": "Тумба подкатная Z-90-1",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-90-1-m.glb"
+  },
+  {
+   "articles": [
+    "Z-90-1"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-90-1.glb",
+   "usdz": "z-90-1-pine.usdz",
+   "title": "Тумба подкатная Z-90-1",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-90-1-m.glb"
+  },
+  {
+   "articles": [
+    "Z-920"
+   ],
+   "decor": "Дуб Галифакс/Бетон Чикаго",
+   "variantName": "Halifax White Oak",
+   "glb": "z-920.glb",
+   "usdz": "z-920-oak.usdz",
+   "title": "Брифинг Z-920",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-920-m.glb"
+  },
+  {
+   "articles": [
+    "Z-920"
+   ],
+   "decor": "Сосна Пасадена/Бетон Чикаго",
+   "variantName": "Pasadena Pine",
+   "glb": "z-920.glb",
+   "usdz": "z-920-pine.usdz",
+   "title": "Брифинг Z-920",
+   "placeholder": false,
+   "asIs": true,
+   "decorStrict": true,
+   "glbMobile": "z-920-m.glb"
   }
+ ],
+ "viewer": {
+  "environmentImage": "flat-c2.hdr",
+  "exposure": 1.0,
+  "toneMapping": "neutral"
+ }
 }
